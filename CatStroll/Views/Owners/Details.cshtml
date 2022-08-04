@@ -49,6 +49,37 @@
         </dd>
     </dl>
 </div>
+<div class="row">
+    @foreach (Cat cat in Model.Cats)
+    {
+        <div class="card m-4" style="width: 18rem;">
+            @if (String.IsNullOrEmpty(cat.ImageUrl))
+            {
+                <img src="https://play-lh.googleusercontent.com/XVHP0sBKrRJYZq_dB1RalwSmx5TcYYRRfYMFO18jgNAnxHAIA1osxM55XHYTb3LpkV8"
+                     class="card-img-top"
+                     alt="Cat" />
+            }
+            else
+            {
+                <img src="@cat.ImageUrl" class="card-img-top" alt="Cat staring" />
+            }
+            <div class="card-body">
+                <div>
+                    <label class="font-weight-bold">Name:</label>
+                    <span>@cat.Name</span>
+                </div>
+                <div>
+                    <label class="font-weight-bold">Breed:</label>
+                    <span>@cat.Breed</span>
+                </div>
+                <div>
+                    <label class="font-weight-bold">Notes:</label>
+                    <p>@cat.Notes</p>
+                </div>
+            </div>
+        </div>
+    }
+</div>
 <div>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
     <a asp-action="Index">Back to List</a>
